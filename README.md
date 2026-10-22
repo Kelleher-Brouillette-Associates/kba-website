@@ -19,13 +19,7 @@ Shared styles live in `assets/css/styles.css`, and behavior (mobile nav, scroll 
 
 ## Contact form (Formspree)
 
-In `contact.html`, replace `YOUR_FORM_ID` in the form's `action` with the real ID from your Formspree dashboard:
-
-```html
-<form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" ...>
-```
-
-Until you do, submitting the form shows a message asking visitors to email Alex or Jesse directly. Once it's set, submissions go to Formspree over AJAX and show an in-page thank-you.
+The form in `contact.html` posts to Formspree form `mykovwqk` (`https://formspree.io/f/mykovwqk`). Submissions are sent over AJAX and show an in-page thank-you. To point it at a different form, change the form's `action` URL.
 
 ## Photos
 

@@ -75,12 +75,6 @@
         return;
       }
 
-      // Not yet wired to a live Formspree form
-      if (form.action.indexOf("YOUR_FORM_ID") !== -1) {
-        showError('Our contact form is being set up. In the meantime, please email us at <a href="mailto:alexkelleher18@gmail.com">alexkelleher18@gmail.com</a> or <a href="mailto:jqbrouillette@gmail.com">jqbrouillette@gmail.com</a>.');
-        return;
-      }
-
       button.disabled = true;
       button.innerHTML = "Sending…";
 
