@@ -1,6 +1,6 @@
 # kba-website
 
-Marketing site for **Kelleher Brouillette Associates**, restaurant advisory services for independent Massachusetts restaurants.
+Marketing site for **Kelleher Brouillette Associates LLC**, restaurant advisory services for independent Massachusetts restaurants.
 
 Plain static HTML/CSS/JS with no build step. Open `index.html` in a browser, or serve the folder with any static host (GitHub Pages, Netlify, Cloudflare Pages).
 

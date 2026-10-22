@@ -510,7 +510,7 @@ em.accent, .accent { font-style: italic; color: var(--brass-deep); font-weight: 
 /* Team preview (home) */
 .duo { display: flex; gap: 18px; }
 .duo figure { margin: 0; flex: 1; position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow); }
-.duo figure:nth-child(2) { margin-top: 48px; }
+
 .duo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .duo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 16px; background: linear-gradient(180deg, transparent, rgba(10,20,32,.85)); color: #fff; }
 .duo figcaption strong { display: block; font-family: var(--serif); font-size: 19px; font-weight: 500; }
