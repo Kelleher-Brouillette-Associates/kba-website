@@ -16,13 +16,15 @@ Plain static HTML/CSS/JS with no build step. Open `index.html` in a browser, or 
 | `website-development.html` | Website Development |
 | `online-presence.html` | Online Presence build-out |
 | `hosting-maintenance.html` | Hosting & Updates |
+| `samples.html` | Sample Sites (previews of the three demo sites) |
 | `contact.html` | Contact Us (emails + Formspree form) |
 | `404.html` | Not-found page |
 | `what-we-do.html`, `what-we-offer.html` | Retired; redirect to `business-assessment.html` and `services.html` so old links keep working |
+| `samples/*/index.html` | Standalone demo sites for fictional restaurants (noindex); previews in `assets/img/samples/` are screenshots of them |
 
 The header's **Services** dropdown lists the five service pages plus the overview. It opens on hover on desktop and on tap in the mobile menu.
 
-Shared styles live in `assets/css/styles.css`, and behavior (mobile nav, Services dropdown, scroll reveals, form submit) is in `assets/js/main.js`. Every page repeats the same header and footer markup, so a change to either one has to be made in all ten content pages. The dropdown's service list lives in that header markup.
+Shared styles live in `assets/css/styles.css`, and behavior (mobile nav, Services dropdown, scroll reveals, form submit) is in `assets/js/main.js`. Every page repeats the same header and footer markup, so a change to either one has to be made in all eleven content pages. The dropdown's service list lives in that header markup.
 
 ## Contact form (Formspree)
 
@@ -31,3 +33,11 @@ The form in `contact.html` posts to Formspree form `mykovwqk` (`https://formspre
 ## Photos
 
 `assets/img/jesse-brouillette.jpg` and `assets/img/alex-kelleher.jpg` are cropped to 4:5 (640×800). To swap in a new headshot, keep the same aspect ratio and file name.
+
+## Search engines
+
+`sitemap.xml` lists the live pages and `robots.txt` points to it. Add or remove pages there when the site changes.
+
+## Brand files
+
+`assets/img/brand/` (logos, circle emblem, QR code) is git-ignored. The master copies are in Drive at `KBA/Logo`.

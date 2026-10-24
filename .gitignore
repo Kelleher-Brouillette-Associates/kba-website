@@ -1,0 +1,6 @@
+# Brand files (logos, emblem, QR code) live here locally and in Drive
+# (G:\My Drive\KBA\Logo); the site does not use them.
+assets/img/brand/
+
+# Original photo the headshot was cropped from
+assets/img/portfolio.jpg
