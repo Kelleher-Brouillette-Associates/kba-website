@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marigold Pizzeria | Sample site by KBA</title>
+<meta name="description" content="A sample restaurant website built by Kelleher Brouillette Associates. Marigold Pizzeria is a fictional restaurant.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a1a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23c8341f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --tomato: #c8341f; --marigold: #f2b33d; --basil: #3d6b3a;
+  --cream: #fbf3e4; --paper: #fffaf1; --ink: #2a1a12; --muted: #6f5b4d; --line: rgba(42,26,18,.12);
+  --serif: "DM Serif Display", Georgia, serif; --sans: "DM Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; margin: 0; }
+.wrap { width: min(1180px, 100% - 40px); margin: 0 auto; }
+
+/* Sample banner */
+.kba-bar { background: #0a1420; color: #d8dde4; font: 500 13px/1.4 var(--sans); padding: 9px 0; position: relative; z-index: 60; }
+.kba-bar .wrap { display: flex; gap: 14px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.kba-bar a { color: #e4c68b; text-decoration: none; font-weight: 700; }
+.kba-bar a:hover { text-decoration: underline; }
+@media (max-width: 600px) { .kba-bar { font-size: 12px; padding: 7px 0; } .kba-bar .wrap { gap: 2px 12px; } }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 50; background: rgba(255,250,241,.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 20px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--serif); font-size: 27px; }
+.logo svg { width: 38px; height: 38px; }
+.links { display: flex; gap: 28px; align-items: center; font-weight: 500; }
+.links a { text-decoration: none; }
+.links a:not(.btn):hover { color: var(--tomato); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; background: var(--tomato); color: #fff; text-decoration: none; font-weight: 700; border: 0; font: inherit; font-weight: 700; cursor: pointer; transition: transform .2s, background .2s; }
+.btn:hover { background: #b12c19; transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); }
+.btn.ghost:hover { background: rgba(255,255,255,.12); }
+@media (max-width: 760px) { .links a:not(.btn) { display: none; } .links .btn { padding: 10px 16px; } }
+
+/* Hero */
+.hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,5,.15) 0%, rgba(20,10,5,.35) 45%, rgba(20,10,5,.85) 100%); }
+.hero .wrap { position: relative; z-index: 1; padding: 120px 0 64px; }
+.status { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.14); backdrop-filter: blur(6px); padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; }
+.status i { width: 9px; height: 9px; border-radius: 50%; background: #7bd17b; box-shadow: 0 0 0 4px rgba(123,209,123,.25); }
+.status.closed i { background: #f08a7a; box-shadow: 0 0 0 4px rgba(240,138,122,.25); }
+.hero h1 { font-size: clamp(44px, 6.6vw, 88px); margin: 20px 0 16px; max-width: 15ch; }
+.hero h1 em { color: var(--marigold); }
+.hero p { font-size: clamp(18px, 2vw, 21px); max-width: 520px; margin: 0 0 30px; color: rgba(255,255,255,.9); }
+.hero .row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.strip { background: var(--tomato); color: #fff; }
+.strip .wrap { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+.strip div { padding: 20px 10px; font-weight: 700; letter-spacing: .04em; }
+.strip div + div { border-left: 1px solid rgba(255,255,255,.25); }
+.strip span { display: block; font-weight: 400; font-size: 14px; opacity: .85; letter-spacing: 0; }
+@media (max-width: 640px) { .strip .wrap { grid-template-columns: 1fr; } .strip div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.25); } .strip div { padding: 14px; } }
+
+section { padding: clamp(64px, 8vw, 104px) 0; }
+.kicker { font-weight: 700; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--tomato); }
+.h2 { font-size: clamp(38px, 5vw, 60px); margin: 12px 0 18px; }
+.h2 em { color: var(--tomato); }
+.lead { color: var(--muted); font-size: 18px; max-width: 560px; }
+
+/* Menu */
+.menu-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs button { font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 999px; border: 2px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--cream); }
+.menu-panel { display: none; }
+.menu-panel.on { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 64px; }
+.item { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 20px 0; border-bottom: 1px dashed var(--line); }
+.item h3 { font-size: 25px; }
+.item .price { font-family: var(--serif); font-size: 24px; color: var(--tomato); }
+.item p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 15.5px; }
+.tag { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--basil); color: #fff; padding: 3px 8px; border-radius: 999px; vertical-align: middle; margin-left: 6px; }
+@media (max-width: 760px) { .menu-panel.on { grid-template-columns: 1fr; } }
+
+/* Special */
+.special { background: var(--ink); color: var(--cream); border-radius: 28px; display: grid; grid-template-columns: 1.1fr .9fr; overflow: hidden; }
+.special .txt { padding: clamp(32px, 5vw, 64px); }
+.special .h2 { color: #fff; }
+.special .h2 em { color: var(--marigold); }
+.special p { color: rgba(251,243,228,.8); }
+.special img { width: 100%; height: 100%; object-fit: cover; min-height: 280px; }
+.days { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.days div { border: 1px solid rgba(255,255,255,.2); border-radius: 14px; padding: 12px 16px; font-size: 15px; }
+.days b { display: block; color: var(--marigold); font-family: var(--serif); font-weight: 400; font-size: 20px; }
+@media (max-width: 860px) { .special { grid-template-columns: 1fr; } .special img { order: -1; max-height: 300px; } }
+
+/* About */
+.cream { background: var(--cream); }
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.about img { border-radius: 28px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+.about p { color: var(--muted); }
+.sig { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--tomato); margin-top: 18px; }
+@media (max-width: 860px) { .about { grid-template-columns: 1fr; } .about img { aspect-ratio: 16 / 10; } }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 12px; margin-top: 34px; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
+.gallery img:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 760px) { .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; } }
+
+/* Visit */
+.visit { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: clamp(26px, 4vw, 40px); }
+.hours { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.hours td { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.hours td:last-child { text-align: right; }
+.hours tr.today td { font-weight: 700; color: var(--tomato); }
+.contact-list { list-style: none; padding: 0; margin: 18px 0 26px; display: grid; gap: 14px; }
+.contact-list li { display: flex; gap: 12px; align-items: flex-start; }
+.contact-list svg { width: 22px; height: 22px; flex: none; color: var(--tomato); margin-top: 2px; }
+.map { margin-top: 8px; height: 180px; border-radius: 18px; background:
+  linear-gradient(90deg, transparent 48%, #fff 48%, #fff 52%, transparent 52%),
+  linear-gradient(0deg, transparent 46%, #fff 46%, #fff 50%, transparent 50%),
+  linear-gradient(35deg, transparent 70%, #fff 70%, #fff 72%, transparent 72%),
+  #e9e1d1; position: relative; }
+.map::after { content: ""; position: absolute; left: 50%; top: 48%; width: 26px; height: 26px; background: var(--tomato); border: 4px solid #fff; border-radius: 50% 50% 50% 0; transform: translate(-50%, -100%) rotate(-45deg); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+label { font-size: 14px; font-weight: 700; display: grid; gap: 6px; }
+input, select, textarea { font: inherit; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(42,26,18,.2); background: var(--paper); color: var(--ink); width: 100%; }
+textarea { min-height: 90px; resize: vertical; }
+.full { grid-column: 1 / -1; }
+.note { font-size: 14px; color: var(--basil); font-weight: 700; display: none; }
+@media (max-width: 860px) { .visit { grid-template-columns: 1fr; } form { grid-template-columns: 1fr; } }
+
+footer { background: var(--ink); color: rgba(251,243,228,.75); padding: 48px 0 110px; font-size: 15px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+footer .logo { color: var(--cream); }
+.social { display: flex; gap: 10px; }
+.social a { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; }
+.social svg { width: 18px; height: 18px; }
+
+/* Mobile action bar */
+.actions { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 70; display: none; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.3); }
+.actions a { color: #fff; text-decoration: none; text-align: center; padding: 12px 6px; font-size: 13px; font-weight: 700; display: grid; gap: 4px; justify-items: center; }
+.actions a + a { border-left: 1px solid rgba(255,255,255,.12); }
+.actions a:last-child { background: var(--tomato); }
+.actions svg { width: 20px; height: 20px; }
+@media (max-width: 760px) { .actions { display: grid; } }
+</style>
+</head>
+<body>
+<div class="kba-bar"><div class="wrap"><span>Sample website by <a href="../../index.html">Kelleher Brouillette Associates</a>. Marigold Pizzeria is a fictional restaurant.</span><a href="../../samples.html">&larr; All sample sites</a></div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#c8341f"/><g fill="#f2b33d"><ellipse cx="20" cy="9" rx="4" ry="6"/><ellipse cx="20" cy="31" rx="4" ry="6"/><ellipse cx="9" cy="20" rx="6" ry="4"/><ellipse cx="31" cy="20" rx="6" ry="4"/></g><circle cx="20" cy="20" r="5.5" fill="#2a1a12"/></svg>Marigold</a>
+    <nav class="links" aria-label="Main"><a href="#menu">Menu</a><a href="#about">Our story</a><a href="#visit">Visit</a><a class="btn" href="#menu">Order pickup</a></nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <img src="img/hero.jpg" alt="A wood-fired pizza with fresh basil">
+  <div class="wrap">
+    <span class="status" data-status><i></i><span>Checking hours&hellip;</span></span>
+    <h1>Wood-fired, <em>hand-stretched,</em> family-made.</h1>
+    <p>Neighborhood pizza in Somerville&rsquo;s Union Square. Dough rests for 48 hours, the oven runs at 800&deg;, and the sauce is Nonna&rsquo;s.</p>
+    <div class="row"><a class="btn" href="#menu">Order for pickup</a><a class="btn ghost" href="#menu">See the menu</a></div>
+  </div>
+</section>
+<div class="strip"><div class="wrap"><div>Pickup<span>Ready in about 20 minutes</span></div><div>Delivery<span>Within 3 miles</span></div><div>Catering<span>Parties of 10 to 200</span></div></div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div><span class="kicker">The menu</span><h2 class="h2">Made to <em>order.</em></h2></div>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="pizza">Pizza</button>
+        <button role="tab" aria-selected="false" data-tab="starters">Starters</button>
+        <button role="tab" aria-selected="false" data-tab="salads">Salads</button>
+        <button role="tab" aria-selected="false" data-tab="dessert">Dessert</button>
+      </div>
+    </div>
+    <div class="menu-panel on" id="pizza">
+      <div class="item"><h3>Margherita</h3><span class="price">$16</span><p>San Marzano tomato, fior di latte, basil, olive oil.</p></div>
+      <div class="item"><h3>The Marigold <span class="tag">House</span></h3><span class="price">$21</span><p>Roasted squash, ricotta, hot honey, sage, pecorino.</p></div>
+      <div class="item"><h3>Union Square</h3><span class="price">$20</span><p>Pepperoni, sausage, roasted peppers, oregano.</p></div>
+      <div class="item"><h3>Bianca</h3><span class="price">$18</span><p>Garlic cream, mozzarella, fontina, lemon zest, arugula.</p></div>
+      <div class="item"><h3>Funghi <span class="tag">Veg</span></h3><span class="price">$19</span><p>Wild mushrooms, taleggio, thyme, garlic confit.</p></div>
+      <div class="item"><h3>Spicy Soppressata</h3><span class="price">$20</span><p>Tomato, mozzarella, soppressata, Calabrian chili.</p></div>
+    </div>
+    <div class="menu-panel" id="starters">
+      <div class="item"><h3>Nonna&rsquo;s Meatballs</h3><span class="price">$13</span><p>Beef and pork, slow-simmered red sauce, grilled bread.</p></div>
+      <div class="item"><h3>Garlic Knots</h3><span class="price">$8</span><p>Six knots, garlic butter, parmesan, marinara.</p></div>
+      <div class="item"><h3>Arancini</h3><span class="price">$11</span><p>Crispy risotto, mozzarella center, spicy aioli.</p></div>
+      <div class="item"><h3>Burrata</h3><span class="price">$14</span><p>Heirloom tomatoes, pesto, grilled focaccia.</p></div>
+    </div>
+    <div class="menu-panel" id="salads">
+      <div class="item"><h3>Garden <span class="tag">Veg</span></h3><span class="price">$11</span><p>Mixed greens, cucumber, radish, red onion, lemon vinaigrette.</p></div>
+      <div class="item"><h3>Caesar</h3><span class="price">$12</span><p>Romaine, focaccia croutons, parmesan, anchovy dressing.</p></div>
+      <div class="item"><h3>Harvest</h3><span class="price">$13</span><p>Kale, roasted squash, apple, goat cheese, pepitas.</p></div>
+    </div>
+    <div class="menu-panel" id="dessert">
+      <div class="item"><h3>Cannoli</h3><span class="price">$6</span><p>Filled to order with sweet ricotta and chocolate chips.</p></div>
+      <div class="item"><h3>Nutella Pizza</h3><span class="price">$12</span><p>Wood-fired dough, Nutella, strawberries, powdered sugar.</p></div>
+      <div class="item"><h3>Affogato</h3><span class="price">$7</span><p>Vanilla gelato drowned in a shot of espresso.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="special">
+      <div class="txt">
+        <span class="kicker" style="color:var(--marigold)">This week</span>
+        <h2 class="h2">Something good <em>every night.</em></h2>
+        <p>Weekly specials posted here, on Google and on Instagram, so regulars always know what&rsquo;s on.</p>
+        <div class="days">
+          <div><b>Tuesday</b>Kids eat free</div>
+          <div><b>Wednesday</b>$10 Margheritas</div>
+          <div><b>Sunday</b>Family meal for 4</div>
+        </div>
+      </div>
+      <img src="img/meatballs.jpg" alt="Meatballs over greens" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="cream" id="about">
+  <div class="wrap about">
+    <img src="img/room.jpg" alt="The bar and dining room" loading="lazy">
+    <div>
+      <span class="kicker">Our story</span>
+      <h2 class="h2">Three generations, <em>one oven.</em></h2>
+      <p>Marigold started with a hand-written recipe card and a secondhand oven. Today it&rsquo;s still family-run: the same 48-hour dough, the same sauce, and a lot more neighbors around the tables.</p>
+      <p>We source tomatoes from Italy, cheese from Vermont, and greens from farms within an hour of the restaurant.</p>
+      <div class="sig">The Rossi family</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">From the oven</span>
+    <h2 class="h2">Hungry <em>yet?</em></h2>
+    <div class="gallery">
+      <img src="img/pizza-2.jpg" alt="Pepperoni pizza" loading="lazy">
+      <img src="img/pizza-1.jpg" alt="Sliced pizza with tomatoes" loading="lazy">
+      <img src="img/salad.jpg" alt="A colorful salad" loading="lazy">
+      <img src="img/pizza-3.jpg" alt="Pizza with vegetables" loading="lazy">
+      <img src="img/meatballs.jpg" alt="Meatballs" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="cream" id="visit">
+  <div class="wrap">
+    <span class="kicker">Visit &amp; catering</span>
+    <h2 class="h2" style="margin-bottom:34px">Come <em>hungry.</em></h2>
+    <div class="visit">
+      <div class="card">
+        <h3 style="font-size:30px">Hours &amp; location</h3>
+        <table class="hours" data-hours>
+          <tr data-day="1"><td>Monday</td><td>Closed</td></tr>
+          <tr data-day="2"><td>Tuesday</td><td>11:30 am &ndash; 9 pm</td></tr>
+          <tr data-day="3"><td>Wednesday</td><td>11:30 am &ndash; 9 pm</td></tr>
+          <tr data-day="4"><td>Thursday</td><td>11:30 am &ndash; 9 pm</td></tr>
+          <tr data-day="5"><td>Friday</td><td>11:30 am &ndash; 10 pm</td></tr>
+          <tr data-day="6"><td>Saturday</td><td>11:30 am &ndash; 10 pm</td></tr>
+          <tr data-day="0"><td>Sunday</td><td>12 pm &ndash; 8 pm</td></tr>
+        </table>
+        <ul class="contact-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>123 Example Street, Somerville, MA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>(617) 555-0142</li>
+        </ul>
+        <div class="map" role="img" aria-label="Map placeholder"></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:30px">Catering &amp; parties</h3>
+        <p style="color:var(--muted);margin:8px 0 0">Office lunches, birthdays, team events. Tell us what you need and we&rsquo;ll send a quote within a day.</p>
+        <form data-sample-form>
+          <label>Name<input required autocomplete="off"></label>
+          <label>Email<input type="email" required autocomplete="off"></label>
+          <label>Event date<input type="date" required></label>
+          <label>Guests<select><option>10&ndash;25</option><option>25&ndash;50</option><option>50&ndash;100</option><option>100+</option></select></label>
+          <label class="full">Anything else?<textarea placeholder="Dietary needs, delivery address, budget&hellip;"></textarea></label>
+          <div class="full"><button class="btn" type="submit">Request a quote</button></div>
+          <p class="note full" data-note>This is a sample form, so nothing was sent. On a real site, this goes straight to your inbox.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#c8341f"/><g fill="#f2b33d"><ellipse cx="20" cy="9" rx="4" ry="6"/><ellipse cx="20" cy="31" rx="4" ry="6"/><ellipse cx="9" cy="20" rx="6" ry="4"/><ellipse cx="31" cy="20" rx="6" ry="4"/></g><circle cx="20" cy="20" r="5.5" fill="#2a1a12"/></svg>Marigold</a>
+    <div class="social"><a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a></div>
+    <span>Sample site by Kelleher Brouillette Associates &middot; Photos from Unsplash</span>
+  </div>
+</footer>
+
+<nav class="actions" aria-label="Quick actions">
+  <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Directions</a>
+  <a href="#menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6"/></svg>Order</a>
+</nav>
+
+<script>
+// Hours: [open, close] in 24h decimal, by getDay(). null = closed.
+var HOURS = { 0: [12, 20], 1: null, 2: [11.5, 21], 3: [11.5, 21], 4: [11.5, 21], 5: [11.5, 22], 6: [11.5, 22] };
+function fmt(h) { var hr = Math.floor(h), m = Math.round((h - hr) * 60), ap = hr >= 12 ? 'pm' : 'am'; hr = hr % 12 || 12; return hr + (m ? ':' + String(m).padStart(2, '0') : '') + ' ' + ap; }
+(function () {
+  var now = new Date(), d = now.getDay(), t = now.getHours() + now.getMinutes() / 60, h = HOURS[d];
+  var el = document.querySelector('[data-status]'), label = el.querySelector('span');
+  if (h && t >= h[0] && t < h[1]) { label.textContent = 'Open now until ' + fmt(h[1]); }
+  else {
+    el.classList.add('closed');
+    for (var i = 0; i < 8; i++) {
+      var nd = (d + i) % 7, nh = HOURS[nd];
+      if (nh && (i > 0 || t < nh[0])) { label.textContent = 'Closed, opens ' + (i === 0 ? 'today' : i === 1 ? 'tomorrow' : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][nd]) + ' at ' + fmt(nh[0]); break; }
+    }
+  }
+  var row = document.querySelector('[data-hours] [data-day="' + d + '"]'); if (row) row.classList.add('today');
+})();
+document.querySelectorAll('[data-tab]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('[data-tab]').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+    document.querySelectorAll('.menu-panel').forEach(function (p) { p.classList.toggle('on', p.id === b.dataset.tab); });
+  });
+});
+document.querySelectorAll('[data-sample-form]').forEach(function (f) {
+  f.addEventListener('submit', function (e) { e.preventDefault(); f.querySelector('[data-note]').style.display = 'block'; f.reset(); });
+});
+</script>
+</body>
+</html>
