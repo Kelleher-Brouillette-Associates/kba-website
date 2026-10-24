@@ -32,6 +32,34 @@
     });
   }
 
+  /* Services dropdown: hover opens it on desktop (CSS); click/tap toggles it everywhere */
+  var dropdowns = document.querySelectorAll(".nav-dd");
+  function closeDropdowns(except) {
+    dropdowns.forEach(function (dd) {
+      if (dd === except) return;
+      dd.classList.remove("open");
+      dd.querySelector(".nav-dd-btn").setAttribute("aria-expanded", "false");
+    });
+  }
+  dropdowns.forEach(function (dd) {
+    var btn = dd.querySelector(".nav-dd-btn");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = dd.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      closeDropdowns(dd);
+    });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".nav-dd")) closeDropdowns();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var openDd = document.querySelector(".nav-dd.open");
+    closeDropdowns();
+    if (openDd) openDd.querySelector(".nav-dd-btn").focus();
+  });
+
   /* Reveal on scroll */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
