@@ -170,16 +170,16 @@ em.accent, .accent { font-style: italic; color: var(--brass-deep); font-weight: 
   content: ""; position: absolute; left: calc(50% - 10px); bottom: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--brass);
 }
 .nav-dd-menu {
-  position: absolute; top: calc(100% + 14px); left: 50%; width: 620px; padding: 12px;
+  position: absolute; top: calc(100% + 14px); right: -158px; width: 620px; max-width: calc(100vw - 32px); padding: 12px;
   display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
   background: #fff; border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--line);
-  opacity: 0; visibility: hidden; transform: translate(-50%, 8px);
+  opacity: 0; visibility: hidden; transform: translateY(8px);
   transition: opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
 }
 .nav-dd-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
-.nav-dd.open .nav-dd-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-dd.open .nav-dd-menu { opacity: 1; visibility: visible; transform: none; }
 @media (hover: hover) and (min-width: 961px) {
-  .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { opacity: 1; visibility: visible; transform: none; }
   .nav-dd:hover .nav-dd-btn { color: #fff; background: rgba(255,255,255,.07); }
 }
 .nav .nav-dd-menu a.dd-item {
@@ -799,6 +799,7 @@ em.accent, .accent { font-style: italic; color: var(--brass-deep); font-weight: 
 /* ---------- Misc ---------- */
 .phase-num svg { width: 16px; height: 16px; }
 .svc-card { color: inherit; }
+.svc-card .text-link { margin-top: auto; padding-top: 22px; }
 .svc-card:hover .text-link svg { transform: translateX(4px); }
 .svc-card:hover .text-link span { background-size: 100% 1px; }
 .grid > .reveal > .card { height: 100%; }
