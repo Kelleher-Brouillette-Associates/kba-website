@@ -143,6 +143,16 @@ footer .logo { color: var(--cream); }
 .social a { width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; }
 .social svg { width: 18px; height: 18px; }
 
+/* Order band */
+.order-band { display: flex; justify-content: space-between; align-items: center; gap: 24px 40px; flex-wrap: wrap; padding: clamp(28px, 4vw, 48px); border-radius: 28px; background: var(--cream); border: 1px solid var(--line); }
+.order-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn.dark { background: var(--ink); }
+.btn.dark:hover { background: #000; }
+.btn.line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.btn.line:hover { background: var(--ink); color: var(--cream); }
+.toast { position: fixed; left: 50%; bottom: 90px; transform: translate(-50%, 20px); z-index: 90; max-width: min(520px, calc(100% - 32px)); background: #0a1420; color: #fff; padding: 14px 18px; border-radius: 14px; font: 500 14.5px/1.45 system-ui, sans-serif; box-shadow: 0 14px 34px rgba(0,0,0,.3); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
 /* Mobile action bar */
 .actions { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 70; display: none; grid-template-columns: repeat(3, 1fr); background: var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.3); }
 .actions a { color: #fff; text-decoration: none; text-align: center; padding: 12px 6px; font-size: 13px; font-weight: 700; display: grid; gap: 4px; justify-items: center; }
@@ -158,7 +168,7 @@ footer .logo { color: var(--cream); }
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#c8341f"/><g fill="#f2b33d"><ellipse cx="20" cy="9" rx="4" ry="6"/><ellipse cx="20" cy="31" rx="4" ry="6"/><ellipse cx="9" cy="20" rx="6" ry="4"/><ellipse cx="31" cy="20" rx="6" ry="4"/></g><circle cx="20" cy="20" r="5.5" fill="#2a1a12"/></svg>Marigold</a>
-    <nav class="links" aria-label="Main"><a href="#menu">Menu</a><a href="#about">Our story</a><a href="#visit">Visit</a><a class="btn" href="#menu">Order pickup</a></nav>
+    <nav class="links" aria-label="Main"><a href="#menu">Menu</a><a href="#about">Our story</a><a href="#visit">Visit</a><a class="btn" href="#order">Order online</a></nav>
   </div>
 </header>
 
@@ -169,10 +179,10 @@ footer .logo { color: var(--cream); }
     <span class="status" data-status><i></i><span>Checking hours&hellip;</span></span>
     <h1>Wood-fired, <em>hand-stretched,</em> family-made.</h1>
     <p>Neighborhood pizza in Somerville&rsquo;s Union Square. Dough rests for 48 hours, the oven runs at 800&deg;, and the sauce is Nonna&rsquo;s.</p>
-    <div class="row"><a class="btn" href="#menu">Order for pickup</a><a class="btn ghost" href="#menu">See the menu</a></div>
+    <div class="row"><a class="btn" href="#order">Order online</a><a class="btn ghost" href="#menu">See the menu</a></div>
   </div>
 </section>
-<div class="strip"><div class="wrap"><div>Pickup<span>Ready in about 20 minutes</span></div><div>Delivery<span>Within 3 miles</span></div><div>Catering<span>Parties of 10 to 200</span></div></div></div>
+<div class="strip"><div class="wrap"><div>Pickup<span>Order online or call ahead</span></div><div>Delivery<span>Through DoorDash &amp; Uber Eats</span></div><div>Catering<span>Parties of 10 to 200</span></div></div></div>
 
 <section id="menu">
   <div class="wrap">
@@ -208,6 +218,15 @@ footer .logo { color: var(--cream); }
       <div class="item"><h3>Cannoli</h3><span class="price">$6</span><p>Filled to order with sweet ricotta and chocolate chips.</p></div>
       <div class="item"><h3>Nutella Pizza</h3><span class="price">$12</span><p>Wood-fired dough, Nutella, strawberries, powdered sugar.</p></div>
       <div class="item"><h3>Affogato</h3><span class="price">$7</span><p>Vanilla gelato drowned in a shot of espresso.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="order" style="padding-top:0">
+  <div class="wrap">
+    <div class="order-band">
+      <div><span class="kicker">Order online</span><h2 class="h2" style="margin-bottom:8px">Pickup or <em>delivery.</em></h2><p class="lead" style="margin:0">Order through the apps you already use. Same menu, same oven.</p></div>
+      <div class="order-btns"><a class="btn" href="#order" data-sample-link="Sample only: on a real site, this opens Marigold&rsquo;s DoorDash page.">Order on DoorDash</a><a class="btn dark" href="#order" data-sample-link="Sample only: on a real site, this opens Marigold&rsquo;s Uber Eats page.">Order on Uber Eats</a><a class="btn line" href="#visit">Call for pickup</a></div>
     </div>
   </div>
 </section>
@@ -308,7 +327,7 @@ footer .logo { color: var(--cream); }
 <nav class="actions" aria-label="Quick actions">
   <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
   <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Directions</a>
-  <a href="#menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6"/></svg>Order</a>
+  <a href="#order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6"/></svg>Order</a>
 </nav>
 
 <script>
@@ -337,6 +356,17 @@ document.querySelectorAll('[data-tab]').forEach(function (b) {
 document.querySelectorAll('[data-sample-form]').forEach(function (f) {
   f.addEventListener('submit', function (e) { e.preventDefault(); f.querySelector('[data-note]').style.display = 'block'; f.reset(); });
 });
+// Sample-only links: explain where the button would go on a real site.
+(function () {
+  var t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t);
+  var timer;
+  document.querySelectorAll('[data-sample-link]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); t.textContent = a.dataset.sampleLink; t.classList.add('show');
+      clearTimeout(timer); timer = setTimeout(function () { t.classList.remove('show'); }, 4200);
+    });
+  });
+})();
 </script>
 </body>
 </html>
