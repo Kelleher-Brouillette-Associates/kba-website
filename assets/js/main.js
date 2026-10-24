@@ -125,7 +125,7 @@
         })
         .catch(function (err) {
           showError((err && err.message ? err.message + ". " : "Something went wrong sending your message. ") +
-            'Please try again, or email us directly at <a href="mailto:alexkelleher18@gmail.com">alexkelleher18@gmail.com</a>.');
+            'Please try again, or email us directly at <a href="mailto:ak@kb-associates.com">ak@kb-associates.com</a>.');
         })
         .finally(function () {
           button.disabled = false;
