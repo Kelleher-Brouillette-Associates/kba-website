@@ -3,6 +3,11 @@
    Palette: harbor navy + brass, warm paper neutrals
    ========================================================================== */
 
+/* Libre Caslon Text (SIL OFL, see assets/fonts/OFL.txt) — self-hosted variable
+   font so headings can use in-between weights; Google Fonts only serves 400/700. */
+@font-face { font-family: "Libre Caslon Text"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/libre-caslon-text.woff2") format("woff2"); }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; font-weight: 400 700; font-display: swap; src: url("../fonts/libre-caslon-text-italic.woff2") format("woff2"); }
+
 :root {
   --ink: #0a1420;
   --navy: #0f2133;
@@ -25,7 +30,7 @@
   --text-inv: #eef2f6;
   --muted-inv: #a9b6c6;
 
-  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --serif: "Libre Caslon Text", "Iowan Old Style", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --radius: 18px;
@@ -81,7 +86,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .7; }
 .dark .eyebrow, .eyebrow.light { color: var(--brass-2); }
 
-.display { font-size: clamp(2.6rem, 6.4vw, 5.1rem); line-height: 1.02; letter-spacing: -0.025em; }
+.display { font-size: clamp(2.6rem, 6.4vw, 5.1rem); line-height: 1.07; letter-spacing: -0.025em; }
 .h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); }
 .h3 { font-size: clamp(1.35rem, 2vw, 1.6rem); }
 .lead { font-size: clamp(1.06rem, 1.5vw, 1.22rem); color: var(--muted); max-width: 62ch; }
