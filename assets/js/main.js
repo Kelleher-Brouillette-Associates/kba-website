@@ -10,6 +10,21 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* Analytics events (Google Analytics 4). No-ops if gtag is blocked or missing. */
+  function track(name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href");
+    var text = (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100);
+    if (href.indexOf("tel:") === 0) track("phone_click", { phone_number: href.slice(4), link_text: text });
+    else if (href.indexOf("mailto:") === 0) track("email_click", { email_address: href.slice(7), link_text: text });
+    else if (/(^|\/)contact\.html/.test(href)) track("contact_cta_click", { link_text: text });
+    else if (/(^|\/)samples\/[^/]+\//.test(href)) track("sample_site_click", { link_url: href, link_text: text });
+  });
+
   /* Mobile nav */
   var toggle = document.querySelector(".nav-toggle");
   if (toggle) {
@@ -113,6 +128,7 @@
       })
         .then(function (res) {
           if (res.ok) {
+            track("generate_lead", { form_id: "contact-form" });
             form.reset();
             card.classList.add("sent");
             card.scrollIntoView({ behavior: "smooth", block: "center" });
