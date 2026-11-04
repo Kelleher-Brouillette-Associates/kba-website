@@ -142,7 +142,7 @@ em.accent, .accent { font-style: italic; color: var(--brass-deep); font-weight: 
 .site-header.scrolled .wrap { height: 66px; }
 
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-.brand-mark { width: 42px; height: 42px; flex: none; }
+.brand-mark { width: 48px; height: 48px; flex: none; border-radius: 50%; box-shadow: 0 0 0 1px rgba(228,198,139,.4); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name { font-family: var(--serif); font-size: 19px; font-weight: 500; letter-spacing: -0.01em; }
 .brand-sub { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass-2); margin-top: 3px; }
